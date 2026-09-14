@@ -1,0 +1,13 @@
+[Unit]
+Description=Arch Rice firstboot cloner
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=/opt/arch-rice-firstboot.pending
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/arch-rice-firstboot.sh
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target

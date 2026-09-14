@@ -1,0 +1,21 @@
+{
+  "packages": [
+    "git",
+    "ansible",
+    "dialog",
+    "base-devel",
+    "python",
+    "curl",
+    "sudo",
+    "networkmanager",
+    "vim"
+  ],
+  "additional-repositories": ["multilib"],
+  "custom_commands": [
+    "curl -sL https://raw.githubusercontent.com/NeilMeyer082/neil-arch-rice/main/archinstall/arch-rice-firstboot.sh > /usr/local/bin/arch-rice-firstboot.sh",
+    "chmod +x /usr/local/bin/arch-rice-firstboot.sh",
+    "curl -sL https://raw.githubusercontent.com/NeilMeyer082/neil-arch-rice/main/archinstall/arch-rice-firstboot.service > /etc/systemd/system/arch-rice-firstboot.service",
+    "systemctl enable arch-rice-firstboot.service",
+    "touch /opt/arch-rice-firstboot.pending"
+  ]
+}
