@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
-# Merge iso/airootfs overlay into a releng-derived profile (~/archlive)
+# Merge airootfs overlay into a releng-derived profile (~/archlive/releng)
 # and ensure profiledef.sh file_permissions cover the new files.
 # Run on the HOST (Fedora) before building, or inside the Arch container.
-# Usage: ./iso/apply.sh [profile-dir]  (default: $HOME/archlive)
+# Usage: ./apply.sh [profile-dir]  (default: auto-detect ~/archlive/releng, then ~/archlive)
 set -euo pipefail
 
-PROFILE_DIR="${1:-$HOME/archlive}"
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if [ $# -ge 1 ]; then
+  PROFILE_DIR="$1"
+elif [ -f "$HOME/archlive/releng/profiledef.sh" ]; then
+  PROFILE_DIR="$HOME/archlive/releng"
+else
+  PROFILE_DIR="$HOME/archlive"
+fi
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC="${REPO_ROOT}/airootfs"
 
 if [ ! -d "${PROFILE_DIR}/airootfs" ]; then
