@@ -1,0 +1,3 @@
+Arch Rice installer -- launching automatically on tty1.
+Manual run: arch-rice-loader.sh
+Repo: https://github.com/NeilMeyer082/neil-arch-rice
