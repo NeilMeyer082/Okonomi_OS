@@ -54,25 +54,25 @@ This repository serves strictly as the ISO autoloading layer:
 [Boot Stock ISO / Live Media]
                 │
                 ▼
-1. Launch `arch-rice-loader.sh` on TTY1
+1. Launch arch-rice-loader.sh on TTY1
                 │
                 ▼
-2. `archinstall` provisions Base OS via `rice.json` (Installs git, ansible, dialog, python, networkmanager, base-devel)
+2. archinstall provisions Base OS via `rice.json` (Installs git, ansible, dialog, python, networkmanager, base-devel)
                 │
                 ▼
-3. `custom_commands` drops a one-shot Firstboot Systemd Service
+3. custom_commands drops a one-shot Firstboot Systemd Service
                 │
                 ▼
 4. Reboot into Target System
                 │
                 ▼
-5. Firstboot Service clones framework live from GitHub to `~/arch-rice`
+5. Firstboot Service clones framework live from GitHub to ~/arch-rice
                 │
                 ▼
-6. User runs `~/arch-rice/bootstrap.sh` (18 Dialog TUI Selection Menus)
+6. User runs ~/arch-rice/bootstrap.sh (18 Dialog TUI Selection Menus)
                 │
                 ▼
-7. Ansible applies choices directly to `~/.config/` via Jinja2 templates
+7. Ansible applies choices directly to ~/.config/ via Jinja2 templates
 ```
  
 Nothing is baked into the ISO image. All packages are pulled fresh from official Arch mirrors, the AUR via `yay`, and upstream releases at install time. Pushing an update to `main` in the framework repo takes effect immediately—no ISO rebuild required.
